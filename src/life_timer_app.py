@@ -1,6 +1,8 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer
 
+from widgets.date_picker import DatePicker
+
 
 class LifeTimerApp(App):
     """An interesting terminal application that visualizes your life's remaining time."""
@@ -16,6 +18,7 @@ class LifeTimerApp(App):
     def compose(self) -> ComposeResult:
         """Called to add widgets to the app."""
         yield Header(show_clock=True)
+        yield DatePicker()
         yield Footer()
 
     def action_quit(self) -> None:

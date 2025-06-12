@@ -1,0 +1,9 @@
+[project]
+name = "LifeTimerApp"
+version = "0.1.0"
+description = "An interesting terminal application that visualizes your life's remaining time"
+requires-python = ">=3.10"
+dependencies = [
+    "textual>=3.3.0",
+    "textual-dev>=1.7.0",
+]

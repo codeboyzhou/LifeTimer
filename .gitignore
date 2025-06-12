@@ -1,0 +1,6 @@
+# Pycharm files
+.idea/
+
+# Python build files
+build/
+*.egg-info

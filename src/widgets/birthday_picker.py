@@ -21,7 +21,7 @@ class BirthdayPicker(Horizontal):
             where each tuple contains the name of a month and its numerical representation (1-12).
         """
 
-        super().__init__(id="date_picker")
+        super().__init__(id="birthday_picker")
         self.min_year = min_year
         self.max_year = max_year if max_year else datetime.now().year
         self.months = [
@@ -81,10 +81,10 @@ class BirthdayPicker(Horizontal):
         day_select.set_options(day_options)
 
     @property
-    def value(self) -> tuple | None:
+    def value(self) -> str | None:
         year_select = self.query_one("#year-select", Select)
         month_select = self.query_one("#month-select", Select)
         day_select = self.query_one("#day-select", Select)
-        if year_select.value and month_select.value and day_select.value:
-            return year_select.value, month_select.value, day_select.value
-        return None
+        if year_select.value == Select.BLANK or month_select.value == Select.BLANK or day_select.value == Select.BLANK:
+            return None
+        return f"{year_select.value}-{str(month_select.value).zfill(2)}-{str(day_select.value).zfill(2)}"

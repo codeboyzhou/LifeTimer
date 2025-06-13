@@ -12,3 +12,7 @@ Label {
 AgeInput Input {
     width: 1fr;
 }
+
+Button {
+    width: 1fr;
+}

@@ -6,10 +6,13 @@ from textual.widgets import Label, Input
 
 class AgeInput(Horizontal):
 
+    def __init__(self):
+        super().__init__(id="age_input")
+
     def compose(self) -> ComposeResult:
         yield Label("I want to live to be")
         yield Input(
-            id="age-input",
+            id="input",
             placeholder="Please input a positive number here",
             type="integer",
             validators=[
@@ -20,6 +23,11 @@ class AgeInput(Horizontal):
         yield Label("years old")
 
     def on_input_blurred(self, event: Input.Blurred) -> None:
-        if event.input.id == "age-input":
+        if event.input.id == "input":
             error_message = event.validation_result.failure_descriptions[0]
             self.notify(title="Error Input", message=error_message, severity="error")
+
+    @property
+    def value(self) -> int | None:
+        value = self.query_one("#input", Input).value
+        return int(value) if value else None

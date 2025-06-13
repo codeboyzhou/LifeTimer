@@ -1,8 +1,8 @@
 from textual.app import App, ComposeResult
-from textual.widgets import Header, Footer
+from textual.widgets import Header, Footer, Button
 
-from widgets.birthday_picker import BirthdayPicker
 from widgets.age_input import AgeInput
+from widgets.birthday_picker import BirthdayPicker
 
 
 class LifeTimerApp(App):
@@ -24,7 +24,21 @@ class LifeTimerApp(App):
         yield Header(show_clock=True)
         yield BirthdayPicker()
         yield AgeInput()
+        yield Button(label="OK, Let's GO!", variant="primary", id="ok-button")
         yield Footer()
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        """Called when the user presses the OK button."""
+        if event.button.id == "ok-button":
+            birthday_picker = self.query_one("#birthday_picker", BirthdayPicker)
+            if birthday_picker.value is None:
+                self.notify(message="Please select your birthday!", title="Error", severity="error")
+                return
+
+            age_input = self.query_one("#age_input", AgeInput)
+            if age_input.value is None:
+                self.notify(message="Please enter the age you want to live to!", title="Error", severity="error")
+                return
 
     def action_quit(self) -> None:
         """Called when the user presses the q key (or closes the app)."""

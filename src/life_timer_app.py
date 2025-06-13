@@ -1,7 +1,7 @@
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer
 
-from widgets.date_picker import DatePicker
+from widgets.birthday_picker import BirthdayPicker
 from widgets.age_input import AgeInput
 
 
@@ -22,7 +22,7 @@ class LifeTimerApp(App):
     def compose(self) -> ComposeResult:
         """Called to add widgets to the app."""
         yield Header(show_clock=True)
-        yield DatePicker()
+        yield BirthdayPicker()
         yield AgeInput()
         yield Footer()
 

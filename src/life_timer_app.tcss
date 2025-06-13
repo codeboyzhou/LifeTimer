@@ -1,4 +1,4 @@
-DatePicker, AgeInput {
+BirthdayPicker, AgeInput {
     padding: 1;
     width: auto;
     height: auto;

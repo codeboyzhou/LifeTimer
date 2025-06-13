@@ -5,7 +5,7 @@ from textual.containers import Horizontal
 from textual.widgets import Select, Label
 
 
-class DatePicker(Horizontal):
+class BirthdayPicker(Horizontal):
     """A widget for selecting a date."""
 
     def __init__(self, min_year: int = 1970, max_year: int | None = None):

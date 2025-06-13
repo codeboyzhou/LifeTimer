@@ -23,7 +23,7 @@ class AgeInput(Horizontal):
         yield Label("years old")
 
     def on_input_blurred(self, event: Input.Blurred) -> None:
-        if event.input.id == "input":
+        if event.input.id == "input" and len(event.validation_result.failure_descriptions) > 0:
             error_message = event.validation_result.failure_descriptions[0]
             self.notify(title="Error Input", message=error_message, severity="error")
 

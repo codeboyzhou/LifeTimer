@@ -25,9 +25,9 @@ class BirthdayPicker(Horizontal):
         self.min_year = min_year
         self.max_year = max_year if max_year else datetime.now().year
         self.months = [
-            ("January", 1), ("February", 2), ("March", 3), ("April", 4),
-            ("May", 5), ("June", 6), ("July", 7), ("August", 8),
-            ("September", 9), ("October", 10), ("November", 11), ("December", 12)
+            ("01", 1), ("02", 2), ("03", 3), ("04", 4),
+            ("05", 5), ("06", 6), ("07", 7), ("08", 8),
+            ("09", 9), ("10", 10), ("11", 11), ("12", 12)
         ]
 
     def compose(self) -> ComposeResult:
@@ -77,7 +77,7 @@ class BirthdayPicker(Horizontal):
             days = 31
 
         day_select = self.query_one("#day-select", Select)
-        day_options = [(str(day), day) for day in range(1, days + 1)]
+        day_options = [(str(day).zfill(2), day) for day in range(1, days + 1)]
         day_select.set_options(day_options)
 
     @property

@@ -39,9 +39,9 @@ class DatePicker(Horizontal):
         years.reverse()  # Display in descending order starting from the current year
 
         yield Label("Please select your birthday")
-        yield Select(years, id="year-select", prompt="Please select your birth year")
-        yield Select(self.months, id="month-select", prompt="Please select your birth month")
-        yield Select([], id="day-select", prompt="Please select your birth day")
+        yield Select(years, id="year-select", prompt="Please select the year")
+        yield Select(self.months, id="month-select", prompt="Please select the month")
+        yield Select([], id="day-select", prompt="Please select the day")
 
     def on_select_changed(self, event: Select.Changed) -> None:
         """

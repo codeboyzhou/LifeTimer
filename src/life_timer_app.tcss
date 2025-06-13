@@ -1,0 +1,11 @@
+DatePicker {
+    padding: 1;
+    width: auto;
+    height: auto;
+    layout: horizontal;
+    border: round green;
+}
+
+DatePicker Label {
+    border: round $background; /* for vertical align to middle */
+}

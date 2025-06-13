@@ -10,6 +10,9 @@ class LifeTimerApp(App):
     TITLE = "Life Timer"
     """Main title for the application."""
 
+    CSS_PATH = "life_timer_app.tcss"
+    """Define the path to the CSS stylesheet used by the application."""
+
     BINDINGS = [
         ("q", "quit", "Quit")
     ]

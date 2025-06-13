@@ -1,11 +1,14 @@
-DatePicker {
+DatePicker, AgeInput {
     padding: 1;
     width: auto;
     height: auto;
     layout: horizontal;
-    border: round green;
 }
 
-DatePicker Label {
+Label {
     border: round $background; /* for vertical align to middle */
+}
+
+AgeInput Input {
+    width: 1fr;
 }

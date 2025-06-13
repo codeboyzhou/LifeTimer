@@ -1,8 +1,11 @@
+from datetime import datetime
+
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, Button
 
 from widgets.age_input import AgeInput
 from widgets.birthday_picker import BirthdayPicker
+from widgets.countdown_display import CountdownDisplay
 
 
 class LifeTimerApp(App):
@@ -25,6 +28,7 @@ class LifeTimerApp(App):
         yield BirthdayPicker()
         yield AgeInput()
         yield Button(label="OK, Let's GO!", variant="primary", id="ok-button")
+        yield CountdownDisplay()
         yield Footer()
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -39,6 +43,15 @@ class LifeTimerApp(App):
             if age_input.value is None:
                 self.notify(message="Please enter the age you want to live to!", title="Error", severity="error")
                 return
+
+            birthday_picker_values = birthday_picker.value.split("-")
+            life_end_year = int(birthday_picker_values[0]) + age_input.value
+            life_end_date = f"{life_end_year}-{birthday_picker_values[1]}-{birthday_picker_values[2]}"
+            life_end_time = datetime.strptime(life_end_date, "%Y-%m-%d").timestamp()
+            life_countdown_ms = (life_end_time - datetime.now().timestamp()) * 1000
+            countdown_display = self.query_one("#countdown_display", CountdownDisplay)
+            countdown_display.set_time(int(life_countdown_ms))
+            countdown_display.start()
 
     def action_quit(self) -> None:
         """Called when the user presses the q key (or closes the app)."""

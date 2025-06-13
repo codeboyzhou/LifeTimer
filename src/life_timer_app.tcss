@@ -16,3 +16,11 @@ AgeInput Input {
 Button {
     width: 1fr;
 }
+
+CountdownDisplay {
+    padding: 3;
+    margin-top: 3;
+    text-align: center;
+    background: $success-muted;
+    color: $text;
+}

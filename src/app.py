@@ -7,7 +7,7 @@ from textual.widgets import Header, Footer, Button
 from widgets.age_input import AgeInput
 from widgets.birthday_picker import BirthdayPicker
 from widgets.countdown_display import CountdownDisplay
-from widgets.widget_value_validator import validator
+from widgets.widget_value_validators import widget_value_validators, WidgetValueValidator, NumberInputValidator
 
 
 class LifeTimerApp(App):
@@ -32,18 +32,24 @@ class LifeTimerApp(App):
         yield Header(show_clock=True)
         yield BirthdayPicker()
         yield AgeInput()
-        yield Button(label="OK, Let's GO!", variant="primary", id="ok-button")
+        yield Button(label="OK, Let's GO!", variant="primary", id="ok_button")
         yield CountdownDisplay()
         yield Footer()
 
     def _on_button_pressed(self, event: Button.Pressed) -> None:
         """Called when the user presses buttons."""
-        if event.button.id == "ok-button":
+        if event.button.id == "ok_button":
             self._on_ok_button_pressed()
 
-    @validator(
-        ("birthday_picker", BirthdayPicker, "Please select your birthday!"),
-        ("age_input", AgeInput, "Please enter the age you want to live to!")
+    @widget_value_validators(
+        WidgetValueValidator(
+            widget_id="birthday_picker", widget_type=BirthdayPicker,
+            failure_message="Please select your birthday"
+        ),
+        NumberInputValidator(
+            widget_id="age_input", widget_type=AgeInput, min=60, max=120,
+            failure_message="Available age should be between 60 and 120"
+        )
     )
     def _on_ok_button_pressed(self) -> None:
         """Called when the user presses the OK button."""

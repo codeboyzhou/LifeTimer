@@ -7,6 +7,7 @@ from textual.widgets import Header, Footer, Button
 from widgets.age_input import AgeInput
 from widgets.birthday_picker import BirthdayPicker
 from widgets.countdown_display import CountdownDisplay
+from widgets.widget_value_validator import validator
 
 
 class LifeTimerApp(App):
@@ -40,18 +41,14 @@ class LifeTimerApp(App):
         if event.button.id == "ok-button":
             self._on_ok_button_pressed()
 
+    @validator(
+        ("birthday_picker", BirthdayPicker, "Please select your birthday!"),
+        ("age_input", AgeInput, "Please enter the age you want to live to!")
+    )
     def _on_ok_button_pressed(self) -> None:
         """Called when the user presses the OK button."""
         birthday_picker = self.query_one("#birthday_picker", BirthdayPicker)
-        if birthday_picker.value is None:
-            self.notify(message="Please select your birthday!", title="Error", severity="error")
-            return
-
         age_input = self.query_one("#age_input", AgeInput)
-        if age_input.value is None:
-            self.notify(message="Please enter the age you want to live to!", title="Error", severity="error")
-            return
-
         birthday_picker_values = birthday_picker.value.split("-")
         life_end_year = int(birthday_picker_values[0]) + age_input.value
         life_end_date = f"{life_end_year}-{birthday_picker_values[1]}-{birthday_picker_values[2]}"

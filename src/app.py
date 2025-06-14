@@ -22,7 +22,8 @@ class LifeTimerApp(App):
     """Define the path to the CSS stylesheet used by the application."""
 
     BINDINGS = [
-        ("q", "quit", "Quit")
+        ("q", "quit", "Quit"),
+        ("d", "toggle_dark_mode", "Toggle Dark/Light Mode")
     ]
     """Key bindings for the application."""
 
@@ -67,3 +68,6 @@ class LifeTimerApp(App):
     def action_quit(self) -> None:
         """Called when the user presses the q key (or closes the app)."""
         self.exit()
+
+    def action_toggle_dark_mode(self) -> None:
+        self.theme = "textual-dark" if self.theme == "textual-light" else "textual-light"

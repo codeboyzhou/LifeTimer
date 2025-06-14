@@ -18,7 +18,7 @@ class LifeTimerApp(App):
     TITLE = "Life Timer"
     """Main title for the application."""
 
-    CSS_PATH = "life_timer_app.tcss"
+    CSS_PATH = "app.tcss"
     """Define the path to the CSS stylesheet used by the application."""
 
     BINDINGS = [
@@ -61,7 +61,3 @@ class LifeTimerApp(App):
     def action_quit(self) -> None:
         """Called when the user presses the q key (or closes the app)."""
         self.exit()
-
-
-if __name__ == "__main__":
-    LifeTimerApp().run()

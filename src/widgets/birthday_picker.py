@@ -4,6 +4,10 @@ from textual.app import ComposeResult
 from textual.containers import Horizontal
 from textual.widgets import Select, Label
 
+from i18n import i18n
+
+_ = i18n()
+
 
 class BirthdayPicker(Horizontal):
     """A widget for selecting a date."""
@@ -38,10 +42,10 @@ class BirthdayPicker(Horizontal):
         years = [(str(year), year) for year in range(self.min_year, self.max_year + 1)]
         years.reverse()  # Display in descending order starting from the current year
 
-        yield Label("Please select your birthday")
-        yield Select(years, id="year-select", prompt="Please select the year")
-        yield Select(self.months, id="month-select", prompt="Please select the month")
-        yield Select([], id="day-select", prompt="Please select the day")
+        yield Label(_("Please select your birthday"))
+        yield Select(years, id="year-select", prompt=_("Please select the year"))
+        yield Select(self.months, id="month-select", prompt=_("Please select the month"))
+        yield Select([], id="day-select", prompt=_("Please select the day"))
 
     def on_select_changed(self, event: Select.Changed) -> None:
         """

@@ -4,10 +4,13 @@ from typing import override
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, Button
 
+from i18n import i18n
 from widgets.age_input import AgeInput
 from widgets.birthday_picker import BirthdayPicker
 from widgets.countdown_display import CountdownDisplay
 from widgets.widget_value_validators import widget_value_validators, WidgetValueValidator, NumberInputValidator
+
+_ = i18n()
 
 
 class LifeTimerApp(App):
@@ -22,8 +25,8 @@ class LifeTimerApp(App):
     """Define the path to the CSS stylesheet used by the application."""
 
     BINDINGS = [
-        ("q", "quit", "Quit"),
-        ("d", "toggle_dark_mode", "Toggle Dark/Light Mode")
+        ("q", "quit", _("Quit")),
+        ("d", "toggle_dark_mode", _("Toggle Dark/Light Mode"))
     ]
     """Key bindings for the application."""
 
@@ -33,7 +36,7 @@ class LifeTimerApp(App):
         yield Header(show_clock=True)
         yield BirthdayPicker()
         yield AgeInput()
-        yield Button(label="OK, Let's GO!", variant="primary", id="ok_button")
+        yield Button(label=_("OK, Let's GO!"), variant="primary", id="ok_button")
         yield CountdownDisplay()
         yield Footer()
 
@@ -45,11 +48,11 @@ class LifeTimerApp(App):
     @widget_value_validators(
         WidgetValueValidator(
             widget_id="birthday_picker", widget_type=BirthdayPicker,
-            failure_message="Please select your birthday"
+            failure_message_i18n_id="Please select your birthday"
         ),
         NumberInputValidator(
             widget_id="age_input", widget_type=AgeInput, min=60, max=120,
-            failure_message="Available age should be between 60 and 120"
+            failure_message_i18n_id="Available age should be between 60 and 120"
         )
     )
     def _on_ok_button_pressed(self) -> None:

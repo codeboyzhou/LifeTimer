@@ -1,5 +1,4 @@
 import gettext
-import os
 from typing import Callable
 
 
@@ -10,11 +9,6 @@ class I18n:
         self.translations = {}
 
     def init_language(self, domain: str, localedir: str, languages: list[str]) -> Callable[[str], str]:
-        for language in languages:
-            locale_path = os.path.join(localedir, language, "LC_MESSAGES")
-            if not os.path.exists(locale_path):
-                raise FileNotFoundError(f"Locale path does not exist: {locale_path}")
-
         self.lang = gettext.translation(domain=domain, localedir=localedir, languages=languages)
         self.lang.install()
         return self.lang.gettext

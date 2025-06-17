@@ -5,7 +5,9 @@ from pydantic import BaseModel
 from textual.app import App
 from textual.widget import Widget
 
-from i18n import i18n as _
+from i18n import i18n
+
+_ = i18n()
 
 WidgetType = TypeVar("WidgetType", bound=Widget)
 

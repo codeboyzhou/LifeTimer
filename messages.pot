@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-16 15:14+0800\n"
+"POT-Creation-Date: 2025-06-17 14:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,5 +55,9 @@ msgstr ""
 
 #: src/widgets/birthday_picker.py:48
 msgid "Please select the day"
+msgstr ""
+
+#: src/widgets/widget_value_validators.py:44
+msgid "Error"
 msgstr ""
 

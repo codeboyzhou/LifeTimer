@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-16 15:14+0800\n"
+"POT-Creation-Date: 2025-06-17 14:27+0800\n"
 "PO-Revision-Date: 2025-06-16 13:48+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -57,6 +57,10 @@ msgstr "请选择出生月"
 #: src/widgets/birthday_picker.py:48
 msgid "Please select the day"
 msgstr "请选择出生日"
+
+#: src/widgets/widget_value_validators.py:44
+msgid "Error"
+msgstr "错误"
 
 #~ msgid "Available age should be between 60 and 120"
 #~ msgstr "有效的年龄值应该在60-120之间"

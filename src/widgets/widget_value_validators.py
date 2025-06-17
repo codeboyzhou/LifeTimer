@@ -41,7 +41,7 @@ def widget_value_validators(*validators: WidgetValueValidator):
                         break
 
             if failure_message is not None:
-                self.notify(message=failure_message, title="Error", severity="error")
+                self.notify(message=failure_message, title=_("Error"), severity="error")
                 return None
 
             return func(self, *args, **kwargs)

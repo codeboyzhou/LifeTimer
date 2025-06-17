@@ -63,9 +63,9 @@ class LifeTimerApp(App):
         life_end_year = int(birthday_picker_values[0]) + age_input.value
         life_end_date = f"{life_end_year}-{birthday_picker_values[1]}-{birthday_picker_values[2]}"
         life_end_timestamp = datetime.strptime(life_end_date, "%Y-%m-%d").timestamp()
-        life_countdown_ms = (life_end_timestamp - datetime.now().timestamp()) * 1000
+        life_countdown_seconds = life_end_timestamp - datetime.now().timestamp()
         countdown_display = self.query_one("#countdown_display", CountdownDisplay)
-        countdown_display.set_start_milliseconds(int(life_countdown_ms))
+        countdown_display.set_start_seconds(int(life_countdown_seconds))
         countdown_display.start()
 
     def action_quit(self) -> None:

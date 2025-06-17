@@ -6,6 +6,9 @@ from typing import Callable
 
 DASH = "-"
 UNDERLINE = "_"
+FALLBACK_LOCALE = "en_US"
+
+LOCALE_NAME_MAX_LENGTH = 85
 
 global_shared_i18n = None
 
@@ -16,17 +19,17 @@ def get_locale_from_win_registry() -> str:
         with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Control Panel\International") as key:
             return winreg.QueryValueEx(key, "LocaleName")[0].replace(DASH, UNDERLINE)
     except FileNotFoundError:
-        return "en_US"
+        return FALLBACK_LOCALE
 
 
 def get_system_locale() -> str:
     if platform.system() == "Windows":
-        buffer = ctypes.create_unicode_buffer(85)
+        buffer = ctypes.create_unicode_buffer(LOCALE_NAME_MAX_LENGTH)
         if ctypes.windll.kernel32.GetUserDefaultLocaleName(buffer, ctypes.sizeof(buffer)) == 0:
             return get_locale_from_win_registry()
         return buffer.value.replace(DASH, UNDERLINE)
     else:
-        return locale.getlocale()[0] or locale.getdefaultlocale()[0] or "en_US"
+        return locale.getlocale()[0] or locale.getdefaultlocale()[0] or FALLBACK_LOCALE
 
 
 def i18n(message: str = None) -> Callable[[str], str]:

@@ -6,6 +6,6 @@ requires-python = ">=3.10"
 dependencies = [
     "babel>=2.17.0",
     "pydantic>=2.11.7",
-    "textual>=3.3.0",
+    "textual>=3.4.0",
     "textual-dev>=1.7.0",
 ]

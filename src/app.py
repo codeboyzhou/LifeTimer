@@ -48,11 +48,11 @@ class LifeTimerApp(App):
     @widget_value_validators(
         WidgetValueValidator(
             widget_id="birthday_picker", widget_type=BirthdayPicker,
-            failure_message_i18n_id="Please select your birthday"
+            failure_message=_("Please select your birthday")
         ),
         NumberInputValidator(
             widget_id="age_input", widget_type=AgeInput, min=60, max=120,
-            failure_message_i18n_id="Available age should be between 60 and 120"
+            failure_message=_("Available age should be between 60 and 120")
         )
     )
     def _on_ok_button_pressed(self) -> None:

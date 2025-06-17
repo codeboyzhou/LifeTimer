@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-17 14:27+0800\n"
+"POT-Creation-Date: 2025-06-17 17:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,14 @@ msgstr ""
 msgid "OK, Let's GO!"
 msgstr ""
 
+#: src/app.py:51 src/widgets/birthday_picker.py:45
+msgid "Please select your birthday"
+msgstr ""
+
+#: src/app.py:55
+msgid "Available age should be between 60 and 120"
+msgstr ""
+
 #: src/widgets/age_input.py:16
 msgid "I want to live to be"
 msgstr ""
@@ -39,10 +47,6 @@ msgstr ""
 
 #: src/widgets/age_input.py:18
 msgid "years old"
-msgstr ""
-
-#: src/widgets/birthday_picker.py:45
-msgid "Please select your birthday"
 msgstr ""
 
 #: src/widgets/birthday_picker.py:46

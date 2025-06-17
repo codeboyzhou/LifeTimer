@@ -15,7 +15,7 @@ WidgetType = TypeVar("WidgetType", bound=Widget)
 class WidgetValueValidator(BaseModel):
     widget_id: str
     widget_type: Type[WidgetType]
-    failure_message_i18n_id: str
+    failure_message: str
 
 
 class NumberInputValidator(WidgetValueValidator):
@@ -32,12 +32,12 @@ def widget_value_validators(*validators: WidgetValueValidator):
                 widget = self.query_one(f"#{validator.widget_id}", validator.widget_type)
 
                 if widget.value is None:
-                    failure_message = _(validator.failure_message_i18n_id)
+                    failure_message = validator.failure_message
                     break
 
                 if isinstance(validator, NumberInputValidator):
                     if widget.value < validator.min or widget.value > validator.max:
-                        failure_message = _(validator.failure_message_i18n_id)
+                        failure_message = validator.failure_message
                         break
 
             if failure_message is not None:

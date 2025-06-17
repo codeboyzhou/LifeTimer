@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-06-17 14:27+0800\n"
+"POT-Creation-Date: 2025-06-17 17:18+0800\n"
 "PO-Revision-Date: 2025-06-16 13:48+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_Hans_CN\n"
@@ -30,6 +30,14 @@ msgstr "切换深色/浅色模式"
 msgid "OK, Let's GO!"
 msgstr "现在就开始吧"
 
+#: src/app.py:51 src/widgets/birthday_picker.py:45
+msgid "Please select your birthday"
+msgstr "请选择你的生日"
+
+#: src/app.py:55
+msgid "Available age should be between 60 and 120"
+msgstr "有效的年龄值应该在60-120之间"
+
 #: src/widgets/age_input.py:16
 msgid "I want to live to be"
 msgstr "我想要活到"
@@ -41,10 +49,6 @@ msgstr "请输入一个在60-120之间的整数"
 #: src/widgets/age_input.py:18
 msgid "years old"
 msgstr "岁"
-
-#: src/widgets/birthday_picker.py:45
-msgid "Please select your birthday"
-msgstr "请选择你的生日"
 
 #: src/widgets/birthday_picker.py:46
 msgid "Please select the year"
@@ -61,7 +65,3 @@ msgstr "请选择出生日"
 #: src/widgets/widget_value_validators.py:44
 msgid "Error"
 msgstr "错误"
-
-#~ msgid "Available age should be between 60 and 120"
-#~ msgstr "有效的年龄值应该在60-120之间"
-

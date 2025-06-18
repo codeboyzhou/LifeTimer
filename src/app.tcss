@@ -5,8 +5,8 @@ BirthdayPicker, AgeInput {
     layout: horizontal;
 }
 
-Label {
-    border: round $background; /* for vertical align to middle */
+BirthdayPicker Label, AgeInput Label {
+    margin-top: 1;
 }
 
 AgeInput Input {
@@ -18,9 +18,20 @@ Button {
 }
 
 CountdownDisplay {
+    height: 10;
     padding: 3;
     margin-top: 3;
-    text-align: center;
+    align-horizontal: center;
     background: $success-muted;
     color: $text;
+}
+
+CountdownDisplay Label {
+    margin-top: 2;
+}
+
+CountdownDisplay TimeDisplay {
+    width: 30;
+    margin-left: 2;
+    margin-right: 2;
 }

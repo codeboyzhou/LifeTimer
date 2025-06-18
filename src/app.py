@@ -65,8 +65,7 @@ class LifeTimerApp(App):
         life_end_timestamp = datetime.strptime(life_end_date, "%Y-%m-%d").timestamp()
         life_countdown_seconds = life_end_timestamp - datetime.now().timestamp()
         countdown_display = self.query_one("#countdown_display", CountdownDisplay)
-        countdown_display.set_start_seconds(int(life_countdown_seconds))
-        countdown_display.start()
+        countdown_display.start(int(life_countdown_seconds))
 
     def action_quit(self) -> None:
         """Called when the user presses the q key (or closes the app)."""
